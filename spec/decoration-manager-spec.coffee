@@ -1,6 +1,7 @@
 DecorationManager = require '../src/decoration-manager'
 TextEditor = require '../src/text-editor'
 
+# CRASH
 describe "DecorationManager", ->
   [decorationManager, buffer, editor, markerLayer1, markerLayer2] = []
 

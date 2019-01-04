@@ -1,6 +1,6 @@
 const SyntaxScopeMap = require('../src/syntax-scope-map')
 
-describe('SyntaxScopeMap', () => {
+fdescribe('SyntaxScopeMap', () => {
   it('can match immediate child selectors', () => {
     const map = new SyntaxScopeMap({
       'a > b > c': 'x',

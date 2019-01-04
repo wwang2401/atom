@@ -2,7 +2,8 @@ fs = require 'fs'
 path = require 'path'
 Module = require 'module'
 
-describe "NativeCompileCache", ->
+# FAILURES
+fdescribe "NativeCompileCache", ->
   nativeCompileCache = require '../src/native-compile-cache'
   [fakeCacheStore, cachedFiles] = []
 

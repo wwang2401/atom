@@ -1,5 +1,6 @@
 const TextEditor = require('../src/text-editor')
 
+// CRASHING
 describe('Selection', () => {
   let buffer, editor, selection
 

@@ -1,6 +1,7 @@
 const temp = require('temp').track()
 const StyleManager = require('../src/style-manager')
 
+// FAILURES
 describe('StyleManager', () => {
   let [styleManager, addEvents, removeEvents, updateEvents] = []
 
@@ -22,7 +23,7 @@ describe('StyleManager', () => {
     }
   })
 
-  describe('::addStyleSheet(source, params)', () => {
+  fdescribe('::addStyleSheet(source, params)', () => {
     it('adds a style sheet based on the given source and returns a disposable allowing it to be removed', () => {
       const disposable = styleManager.addStyleSheet('a {color: red}')
       expect(addEvents.length).toBe(1)

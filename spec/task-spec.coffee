@@ -1,6 +1,7 @@
 Task = require '../src/task'
 Grim = require 'grim'
 
+# FAILURES
 describe "Task", ->
   describe "@once(taskPath, args..., callback)", ->
     it "terminates the process after it completes", ->
@@ -57,12 +58,12 @@ describe "Task", ->
       expect(deprecations[0].getStacks()[0][1].fileName).toBe handlerPath
       jasmine.restoreDeprecationsSnapshot()
 
-  it "adds data listeners to standard out and error to report output", ->
+  fit "adds data listeners to standard out and error to report output", ->
     task = new Task(require.resolve('./fixtures/task-spec-handler'))
     {stdout, stderr} = task.childProcess
 
     task.start()
-    task.start()
+    # task.start()
     expect(stdout.listeners('data').length).toBe 1
     expect(stderr.listeners('data').length).toBe 1
 

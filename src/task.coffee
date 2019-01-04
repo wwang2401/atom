@@ -72,6 +72,9 @@ class Task
     env = Object.assign({}, process.env, {userAgent: navigator.userAgent})
     @childProcess = ChildProcess.fork require.resolve('./task-bootstrap'), [compileCachePath, taskPath], {env, silent: true}
 
+    # TODO HERE
+    process.stderr.write "stdout #{@childProcess.stdout.listeners('data').length} / stderr #{@childProcess.stderr.listeners('data').length}"
+
     @on "task:log", -> console.log(arguments...)
     @on "task:warn", -> console.warn(arguments...)
     @on "task:error", -> console.error(arguments...)
@@ -92,10 +95,14 @@ class Task
     if @childProcess.stdout?
       @childProcess.stdout.removeAllListeners()
       @childProcess.stdout.on 'data', (data) -> console.log data.toString()
+      process.stderr.write "\nstdout.removeAllListeners: stdout #{@childProcess.stdout.listeners('data').length} / stderr #{@childProcess.stderr.listeners('data').length}"
 
     if @childProcess.stderr?
       @childProcess.stderr.removeAllListeners()
       @childProcess.stderr.on 'data', (data) -> console.error data.toString()
+      process.stderr.write "\nstderr.removeAllListeners: stdout #{@childProcess.stdout.listeners('data').length} / stderr #{@childProcess.stderr.listeners('data').length}"
+
+    process.stderr.write "\nhandleEvents DONE: stdout #{@childProcess.stdout.listeners('data').length} / stderr #{@childProcess.stderr.listeners('data').length}"
 
   # Public: Starts the task.
   #
